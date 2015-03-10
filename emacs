@@ -107,3 +107,9 @@
 
 ;; auto resize font to keep 80 column buffer
 (load-file "~/.emacs.d/auto-resize-font.el")
+
+;; org-mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
