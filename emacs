@@ -46,9 +46,11 @@
 (require 'flymake-ruby)
 (require 'robe)
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook 'rubocop-mode)
 
 (setq ruby-deep-indent-paren t)
 (setq ruby-indent-level 2)
+(setq ruby-deep-indent-paren nil)
 (projectile-global-mode)
 ;; (add-hook 'ruby-mode-hook 'projectile-on)
 ;; (remove-hook 'ruby-mode-hook 'projectile-on)
