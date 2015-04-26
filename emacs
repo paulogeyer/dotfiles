@@ -103,7 +103,14 @@
 ;; theme
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-sanityinc-solarized-dark)
+(color-theme-solarized)
 
 ;; auto resize font to keep 80 column buffer
-(load-file "~/.emacs.d/auto-resize-font.el")
+;; https://raw.githubusercontent.com/brandon-rhodes/dot-emacs/master/auto-resize-font.el
+;; (load-file "~/.emacs.d/auto-resize-font.el")
+
+;; prefer unicode
+(prefer-coding-system 'utf-8)
+
+;; slime
+(setq inferior-lisp-program "sbcl")
