@@ -40,14 +40,17 @@
 
 ;; scss
 (setq scss-compile-at-save nil)
+(setq css-indent-offset 2)
 
 ;; ruby, rails, etc
 (require 'flymake-ruby)
 (require 'robe)
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook 'rubocop-mode)
 
 (setq ruby-deep-indent-paren t)
 (setq ruby-indent-level 2)
+(setq ruby-deep-indent-paren nil)
 (projectile-global-mode)
 ;; (add-hook 'ruby-mode-hook 'projectile-on)
 ;; (remove-hook 'ruby-mode-hook 'projectile-on)
@@ -106,6 +109,8 @@
 (color-theme-solarized)
 
 ;; auto resize font to keep 80 column buffer
+;; (load-file "~/.emacs.d/auto-resize-font.el")
+
 ;; https://raw.githubusercontent.com/brandon-rhodes/dot-emacs/master/auto-resize-font.el
 ;; (load-file "~/.emacs.d/auto-resize-font.el")
 
@@ -113,4 +118,29 @@
 (prefer-coding-system 'utf-8)
 
 ;; slime
+(require 'slime-autoloads)
+(setq slime-contribs '(slime-fancy))
 (setq inferior-lisp-program "sbcl")
+
+;; org-mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;; (setq org-default-notes-file (concat org-directory "/notes.org"));;
+(define-key global-map "\C-cc" 'org-capture)
+
+;; haskell configuration
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+(eval-after-load "haskell-mode"
+  '(progn
+     (define-key haskell-mode-map (kbd "C-x C-d") nil)
+     (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+     (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
+     (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+     (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+     (define-key haskell-mode-map (kbd "C-c M-.") nil)
+     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
