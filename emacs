@@ -66,6 +66,7 @@
 
 ;; web mode
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 
 ;; rvm integration
 (global-set-key (kbd "C-c r a") 'rvm-activate-corresponding-ruby)
@@ -141,6 +142,11 @@
 ;; haskell configuration
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+;; blog admin
+(require 'blog-admin)
+(setq blog-admin-backend-path "~/blog")
+
+
 (eval-after-load "haskell-mode"
   '(progn
      (define-key haskell-mode-map (kbd "C-x C-d") nil)
@@ -151,3 +157,18 @@
      (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
      (define-key haskell-mode-map (kbd "C-c M-.") nil)
      (define-key haskell-mode-map (kbd "C-c C-d") nil)))
+
+;; (require 'bts)
+
+;; ;; Key Binding
+;; (global-unset-key (kbd "M-b"))
+;; (global-set-key (kbd "M-b n")   'bts:ticket-new)
+;; (global-set-key (kbd "M-b s")   'bts:summary-open)
+;; (global-set-key (kbd "M-b p n") 'bts:project-new)
+;; (global-set-key (kbd "M-b p u") 'bts:project-update)
+;; (global-set-key (kbd "M-b p d") 'bts:project-remove)
+;; (global-set-key (kbd "M-b p D") 'bts:project-remove-all)
+;; (global-set-key (kbd "M-b q n") 'bts:query-new)
+;; (global-set-key (kbd "M-b q u") 'bts:query-update)
+;; (global-set-key (kbd "M-b q d") 'bts:query-remove)
+;; (global-set-key (kbd "M-b q D") 'bts:query-remove-all
